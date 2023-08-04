@@ -1,9 +1,24 @@
-import app from './app';
-import dotenv from 'dotenv';
+// Importa o pacote express
+//const express = require('express');
+// App Express
+//const app = express();
+
+import app from './app'
+
+//Importar o dotenv para fazer a ligação dos arquivos (portas)
+import dotenv from "dotenv";
 dotenv.config();
-const fs = require('fs');
-const data: string = './database.json';
 
-const PORT = process.env.PORT || 3000
+// Endpoint raiz
+app.get('/', (request: any, response: any) => {
+    response.send('ta funcionando!!!')
+});
 
-app.listen(PORT, () => console.log('Rodando na porta', + PORT));
+//Criar PORTA no arquivo .env
+const PORT = process.env.PORT;
+
+// Inicia o sevidor
+app.listen(PORT, () =>
+    console.log(`rodando na porta ${PORT}`));
+
+ 
